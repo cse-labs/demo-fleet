@@ -16,7 +16,5 @@ deployments:
             nodePort: 30080
             port: 8080
             readinessProbe: /readyz
-            targets:
-                - ring:2
-                - ring:3
+            targets: []
             workspace: imdb
