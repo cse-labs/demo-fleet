@@ -16,7 +16,7 @@ then
 fi
 
 # update CLI
-.devcontainer/cli-update.sh 0.9.1-beta1
+.devcontainer/cli-update.sh
 
 # update oh-my-zsh
 git -C "$HOME/.oh-my-zsh" pull

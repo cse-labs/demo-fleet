@@ -2,6 +2,9 @@
 
 tag=$1
 
+# todo - remove this once releaed
+tag="0.9.1-beta1"
+
 mkdir -p "$HOME/bin"
 
 # update CLI
