@@ -27,3 +27,5 @@ commands:
     hidden: true
   - name: sync
     hidden: true
+  - name: update-cli
+    hidden: true
