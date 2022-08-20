@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{gitops.app}}
+  namespace: {{gitops.namespace}}
+  labels:
+    app.kubernetes.io/name: {{gitops.app}}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{gitops.app}}
+  template:
+    metadata:
+      labels:
+        app: {{gitops.app}}
+    spec:
+      containers:
+        - name: app
+          image: {{gitops.image}}
+          imagePullPolicy: Always
+          args:
+          - --region
+          - {{gitops.cluster.region}}
+          - --zone
+          - {{gitops.cluster.zone}}
+          - --district
+          - {{gitops.cluster.district}}
+          - --store
+          - {{gitops.cluster.store}}
+          ports:
+            - name: http
+              containerPort: {{gitops.port}}
+              protocol: TCP
+          readinessProbe:
+            initialDelaySeconds: 10
+            httpGet:
+              path: /tlog/readyz
+              port: {{gitops.port}}
+          livenessProbe:
+            initialDelaySeconds: 60
+            periodSeconds: 60
+            httpGet:
+              path: /tlog/healthz
+              port: {{gitops.port}}
+          resources:
+            limits:
+              cpu: 400m
+              memory: 128Mi
+            requests:
+              cpu: 200m
+              memory: 64Mi

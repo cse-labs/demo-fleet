@@ -1,0 +1,10 @@
+template: .gitops
+deployments:
+    dev:
+        target: dev
+        values:
+            app: flagger
+            environment: dev
+            namespace: projectcontour
+            targets: []
+            workspace: flagger-system

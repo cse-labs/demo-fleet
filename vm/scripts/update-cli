@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# update CLI
+cd $HOME/gitops/vm/cli || exit
+
+# remove old CLI
+rm -rf kic .kic
+
+# use latest release
+tag=$(curl -s https://api.github.com/repos/retaildevcrews/pib-dev/releases/latest | grep tag_name | cut -d '"' -f4)
+
+wget -O kic.tar.gz "https://github.com/retaildevcrews/pib-dev/releases/download/$tag/kic-$tag-linux-amd64.tar.gz"
+tar -xvzf kic.tar.gz
+rm kic.tar.gz
+
+cd "$OLDPWD" || exit

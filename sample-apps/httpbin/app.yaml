@@ -1,0 +1,20 @@
+template: pib-service
+deployments:
+    dev:
+        target: dev
+        values:
+            app: httpbin
+            cpuLimit: 400m
+            cpuRequest: 250m
+            environment: dev
+            image: docker.io/kennethreitz/httpbin:latest
+            ingressPrefix: /
+            livenessProbe: /get
+            memoryLimit: 128Mi
+            memoryRequest: 64Mi
+            namespace: httpbin
+            nodePort: 30080
+            port: 80
+            readinessProbe: /get
+            targets: []
+            workspace: httpbin

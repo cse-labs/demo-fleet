@@ -1,0 +1,11 @@
+template: .gitops
+deployments:
+  dev:
+    target: dev
+    values:
+      app: flux-system
+      namespace: flux-system
+      workspace: flux-system
+      repo: yourTenant/yourFleet
+      branch: main
+      targets: [ all ]

@@ -1,0 +1,10 @@
+template: .gitops
+deployments:
+  dev:
+    target: dev
+    values:
+      app: redis
+      environment: dev
+      namespace: redis
+      targets: [ all ]
+      workspace: bootstrap

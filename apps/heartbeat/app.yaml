@@ -1,0 +1,21 @@
+template: pib-service
+deployments:
+    dev:
+        target: dev
+        values:
+            app: heartbeat
+            cpuLimit: 100m
+            cpuRequest: 100m
+            environment: dev
+            image: ghcr.io/cse-labs/heartbeat:latest
+            ingressPrefix: /heartbeat
+            livenessProbe: /healthz
+            memoryLimit: 64Mi
+            memoryRequest: 64Mi
+            namespace: heartbeat
+            nodePort: 30088
+            port: 8080
+            readinessProbe: /readyz
+            targets:
+                - all
+            workspace: bootstrap

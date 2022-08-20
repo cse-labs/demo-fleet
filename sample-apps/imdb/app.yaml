@@ -1,0 +1,20 @@
+template: pib-service
+deployments:
+    dev:
+        target: dev
+        values:
+            app: imdb
+            cpuLimit: 500m
+            cpuRequest: 250m
+            environment: dev
+            image: ghcr.io/cse-labs/pib-imdb:latest
+            ingressPrefix: /
+            livenessProbe: /healthz
+            memoryLimit: 128Mi
+            memoryRequest: 64Mi
+            namespace: imdb
+            nodePort: 30080
+            port: 8080
+            readinessProbe: /readyz
+            targets: []
+            workspace: imdb

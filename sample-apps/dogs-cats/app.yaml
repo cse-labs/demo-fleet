@@ -1,0 +1,23 @@
+template: vote-service
+deployments:
+    dev:
+        target: dev
+        values:
+            app: dogs-cats
+            cpuLimit: 500m
+            cpuRequest: 250m
+            environment: dev
+            image: ghcr.io/cse-labs/pib-vote:latest
+            ingressPrefix: /
+            livenessProbe: /healthz
+            memoryLimit: 128Mi
+            memoryRequest: 64Mi
+            namespace: dogs-cats
+            nodePort: 30080
+            port: 8080
+            readinessProbe: /readyz
+            key1: Dogs
+            key2: Cats
+            targets: []
+            title: Dogs Rule!
+            workspace: dogs-cats
