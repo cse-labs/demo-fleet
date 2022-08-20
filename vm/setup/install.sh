@@ -11,10 +11,12 @@ sudo chown -R "${PIB_ME}:${PIB_ME}" "$HOME"
 echo "$(date +'%Y-%m-%d %H:%M:%S')  installing CLI" >> "$HOME/status"
 echo "installing cli"
 
+mkdir -p "$HOME/bin"
+
 # use latest release
 tag=$(curl -s https://api.github.com/repos/retaildevcrews/pib-dev/releases/latest | grep tag_name | cut -d '"' -f4)
 
-cd "$HOME/gitops/vm/cli" || exit
+cd "$HOME/bin" || exit
 wget -O vm-kic.tar.gz "https://github.com/retaildevcrews/pib-dev/releases/download/$tag/vm-kic-$tag-linux-amd64.tar.gz"
 tar -xvzf vm-kic.tar.gz
 rm vm-kic.tar.gz
@@ -73,7 +75,7 @@ rm -f k9s_Linux_x86_64.tar.gz
 
 # update pib.bashrc
 {
-  echo "export PATH=\$PATH:\$HOME/gitops/vm/cli"
+  echo "export PATH=\$PATH:\$HOME/bin"
   echo ""
   echo "shopt -s expand_aliases"
   echo ""

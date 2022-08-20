@@ -1,13 +1,18 @@
 #!/bin/bash
 
+tag=$1
+
+mkdir -p "$HOME/bin"
 # update CLI
-cd $HOME/gitops/vm/cli || exit
+cd "$HOME/bin" || exit
 
 # remove old CLI
 rm -rf kic .kic
 
-# use latest release
-tag=$(curl -s https://api.github.com/repos/retaildevcrews/pib-dev/releases/latest | grep tag_name | cut -d '"' -f4)
+if [ "$tag" = "" ]; then
+    # use latest release
+    tag=$(curl -s https://api.github.com/repos/retaildevcrews/pib-dev/releases/latest | grep tag_name | cut -d '"' -f4)
+fi
 
 wget -O kic.tar.gz "https://github.com/retaildevcrews/pib-dev/releases/download/$tag/kic-$tag-linux-amd64.tar.gz"
 tar -xvzf kic.tar.gz

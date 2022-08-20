@@ -38,7 +38,8 @@
 		"mutantdino.resourcemonitor",
 		"humao.rest-client",
 		"timonwong.shellcheck",
-		"golang.go"
+		"golang.go",
+		"hediet.vscode-drawio"
 	],
 
 	"waitFor": "postCreateCommand",

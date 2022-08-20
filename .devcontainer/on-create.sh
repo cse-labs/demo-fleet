@@ -13,8 +13,10 @@ echo "$(date +'%Y-%m-%d %H:%M:%S')    on-create start" >> "$HOME/status"
 #export PIB_DNS_RG=yourDNSResourceGroup
 #export PIB_SSL=yourDomain
 
+mkdir -p $HOME/bin
+
 export GOPATH="$HOME/go"
-export PATH="$PATH:$PWD/cli"
+export PATH="$PATH:$HOME/bin"
 
 mkdir -p "$HOME/.ssh"
 mkdir -p "$HOME/go"
@@ -43,7 +45,7 @@ mkdir -p "$HOME/.oh-my-zsh/completions"
     echo ""
 
     # add cli to path
-    echo "export PATH=\$PATH:$PWD/cli"
+    echo "export PATH=\$PATH:$HOME/bin"
     echo ""
 
     echo "export GOPATH=\$HOME/go"
@@ -62,17 +64,8 @@ mkdir -p "$HOME/.oh-my-zsh/completions"
 
 } >> "$HOME/.zshrc"
 
-# echo "dowloading kic CLI"
-cd cli || exit
-
-# use latest release
-tag=$(curl -s https://api.github.com/repos/retaildevcrews/pib-dev/releases/latest | grep tag_name | cut -d '"' -f4)
-
-wget -O flt.tar.gz "https://github.com/retaildevcrews/pib-dev/releases/download/$tag/flt-$tag-linux-amd64.tar.gz"
-tar -xvzf flt.tar.gz
-rm flt.tar.gz
-
-cd "$OLDPWD" || exit
+# install cli
+.devcontainer/cli-update.sh
 
 # echo "generating completions"
 flt completion zsh > "$HOME/.oh-my-zsh/completions/_flt"
