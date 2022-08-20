@@ -1,4 +1,0 @@
-#!/bin/bash
-
-# run flux reconcile
-flux reconcile source git gitops

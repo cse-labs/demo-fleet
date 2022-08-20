@@ -1,8 +1,0 @@
-#!/bin/bash
-
-if [[ $(kubectl get po -A) == *"$1"* ]]
-then
-   echo "found"
-else
-   echo "not found"
-fi
