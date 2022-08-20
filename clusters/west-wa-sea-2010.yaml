@@ -1,0 +1,14 @@
+kind: Cluster
+metadata:
+  name: west-wa-sea-2010
+  labels:
+    environment: dev
+    region: west
+    zone: west-wa
+    district: west-wa-sea
+    store: west-wa-sea-2010
+    domain: west-wa-sea-2010
+    ingressType: Http
+    gitopsRepo: cse-labs/demo-fleet
+    gitopsBranch: main
+spec:

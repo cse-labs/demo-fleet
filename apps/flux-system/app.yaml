@@ -6,6 +6,6 @@ deployments:
       app: flux-system
       namespace: flux-system
       workspace: flux-system
-      repo: yourTenant/yourFleet
+      repo: cse-labs/demo-fleet
       branch: main
       targets: [ all ]

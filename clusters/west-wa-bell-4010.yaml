@@ -1,0 +1,14 @@
+kind: Cluster
+metadata:
+  name: west-wa-bell-4010
+  labels:
+    environment: dev
+    region: west
+    zone: west-wa
+    district: west-wa-bell
+    store: west-wa-bell-4010
+    domain: west-wa-bell-4010
+    ingressType: Http
+    gitopsRepo: cse-labs/demo-fleet
+    gitopsBranch: main
+spec:

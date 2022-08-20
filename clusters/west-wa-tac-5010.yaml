@@ -1,0 +1,14 @@
+kind: Cluster
+metadata:
+  name: west-wa-tac-5010
+  labels:
+    environment: dev
+    region: west
+    zone: west-wa
+    district: west-wa-tac
+    store: west-wa-tac-5010
+    domain: west-wa-tac-5010
+    ingressType: Http
+    gitopsRepo: cse-labs/demo-fleet
+    gitopsBranch: main
+spec:
