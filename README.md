@@ -143,7 +143,7 @@ metadata:
 
 ```
 
-- Deploy to `ring:0`
+- Deploy to `ring:1`
 
 > Make sure to start in the apps/imdb directory
 
@@ -151,15 +151,6 @@ metadata:
 
 # clear existing targets
 flt targets clear
-flt targets add ring:0
-flt targets deploy
-
-# wait for ci-cd to run
-git pull
-
-# check the clusters in Arc for the imdb workload
-
-# add ring:1
 flt targets add ring:1
 flt targets deploy
 
@@ -168,9 +159,18 @@ git pull
 
 # check the clusters in Arc for the imdb workload
 
-# deploy to ring:1 and ring:2
+# add ring:2
+flt targets add ring:2
+flt targets deploy
+
+# wait for ci-cd to run
+git pull
+
+# check the clusters in Arc for the imdb workload
+
+# deploy to ring:2 and ring:3
 flt targets clear
-flt targets add ring:1 ring:2
+flt targets add ring:2 ring:3
 flt targets deploy
 
 # wait for ci-cd to run

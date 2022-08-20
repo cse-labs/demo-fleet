@@ -11,5 +11,5 @@ metadata:
     ingressType: Http
     gitopsRepo: cse-labs/demo-fleet
     gitopsBranch: main
-    ring: 1
+    ring: "1"
 spec:

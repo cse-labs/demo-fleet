@@ -17,5 +17,5 @@ deployments:
             port: 8080
             readinessProbe: /readyz
             targets:
-                - ring:0
+                - ring:1
             workspace: imdb
