@@ -64,7 +64,7 @@ mkdir -p "$HOME/.oh-my-zsh/completions"
 
 } >> "$HOME/.zshrc"
 
-# install cli
+# install flt cli
 .devcontainer/cli-update.sh
 
 # echo "generating completions"
