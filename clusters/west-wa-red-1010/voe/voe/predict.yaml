@@ -22,7 +22,7 @@ spec:
       labels:
         app: predictmodule
       annotations:
-        gitops.version: v-22-09-21-18-08-15
+        gitops.version: v-22-09-21-18-57-50
     spec:
       nodeSelector:
         "beta.kubernetes.io/os": linux
