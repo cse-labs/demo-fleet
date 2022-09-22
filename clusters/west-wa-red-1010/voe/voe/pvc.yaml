@@ -3,10 +3,11 @@ kind: PersistentVolumeClaim
 metadata:
   name: pvc-upload
   namespace: voe
+annotations:
+  gitops.version: v-22-09-22-17-19-23
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
       storage: 5Gi
-  storageClassName: local-path
