@@ -7,5 +7,6 @@ deployments:
       environment: dev
       namespace: voe
       port: 8000
-      targets: []
+      targets:
+        - store:west-wa-red-1010
       workspace: voe
