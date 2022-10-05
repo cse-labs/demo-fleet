@@ -1,0 +1,15 @@
+kind: Cluster
+metadata:
+  name: west-wa-red-cppe
+  labels:
+    environment: dev
+    region: west
+    zone: west-wa
+    district: west-wa-red
+    store: west-wa-red-cppe
+    domain: west-wa-red-cppe
+    ingressType: Http
+    gitopsRepo: cse-labs/demo-fleet
+    gitopsBranch: main
+    ring: 2
+spec:
