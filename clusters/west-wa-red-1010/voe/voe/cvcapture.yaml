@@ -22,7 +22,7 @@ spec:
       labels:
         app: cvcapturemodule
       annotations:
-        gitops.version: v-22-10-06-17-01-49
+        gitops.version: v-22-10-06-17-24-42
     spec:
       nodeSelector:
         "beta.kubernetes.io/os": linux

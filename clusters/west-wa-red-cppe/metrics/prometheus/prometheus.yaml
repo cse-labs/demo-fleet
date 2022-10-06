@@ -66,14 +66,14 @@ data:
     scrape_configs:
       - job_name: 'webv-heartbeat'
         static_configs:
-          - targets: [ 'webv-heartbeat.monitoring.svc.cluster.local:8080' ]
+          - targets: [ 'webv-heartbeat.heartbeat.svc.cluster.local:8080' ]
         metric_relabel_configs:
         - source_labels: [ __name__ ]
           regex: "WebVDuration_count|WebVSummary|WebVSummary_count"
           action: keep
       - job_name: 'webv-imdb'
         static_configs:
-          - targets: [ 'webv-imdb.monitoring.svc.cluster.local:8080' ]
+          - targets: [ 'webv-imdb.imdb.svc.cluster.local:8080' ]
         metric_relabel_configs:
         - source_labels: [ __name__ ]
           regex: "WebVDuration_count|WebVSummary|WebVSummary_count"
