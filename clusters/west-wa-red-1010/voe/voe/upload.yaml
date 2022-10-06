@@ -22,7 +22,7 @@ spec:
       labels:
         app: uploadmodule
       annotations:
-        gitops.version: v-22-10-06-18-14-27
+        gitops.version: v-22-10-06-20-57-35
     spec:
       nodeSelector:
         "beta.kubernetes.io/os": linux

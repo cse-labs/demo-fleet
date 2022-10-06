@@ -4,9 +4,10 @@ metadata:
   name: imdb
   namespace: imdb
 spec:
-  type: ClusterIP
+  type: NodePort
   ports:
     - port: 8080
+      nodePort: 30080
       targetPort: http
       protocol: TCP
       name: http

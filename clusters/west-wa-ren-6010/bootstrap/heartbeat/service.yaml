@@ -4,9 +4,10 @@ metadata:
   name: heartbeat
   namespace: heartbeat
 spec:
-  type: ClusterIP
+  type: NodePort
   ports:
     - port: 8080
+      nodePort: 30088
       targetPort: http
       protocol: TCP
       name: http
