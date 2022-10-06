@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: {{gitops.app}}
+  name: {{gitops.name}}
   namespace: {{gitops.namespace}}
 
 ---
@@ -9,7 +9,7 @@ metadata:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: {{gitops.app}}
+  name: {{gitops.name}}
 rules:
 - apiGroups: [""]
   resources:
@@ -32,14 +32,14 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: {{gitops.app}}
+  name: {{gitops.name}}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: {{gitops.app}}
+  name: {{gitops.name}}
 subjects:
 - kind: ServiceAccount
-  name: {{gitops.app}}
+  name: {{gitops.name}}
   namespace: {{gitops.namespace}}
 
 ---
@@ -47,9 +47,9 @@ subjects:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{gitops.app}}-server-conf
+  name: {{gitops.name}}-server-conf
   labels:
-    name: {{gitops.app}}-server-conf
+    name: {{gitops.name}}-server-conf
   namespace: {{gitops.namespace}}
 data:
   prometheus.yml: |-
@@ -66,14 +66,14 @@ data:
     scrape_configs:
       - job_name: 'webv-heartbeat'
         static_configs:
-          - targets: [ 'webv-heartbeat.monitoring.svc.cluster.local:8080' ]
+          - targets: [ 'webv-heartbeat.heartbeat.svc.cluster.local:8080' ]
         metric_relabel_configs:
         - source_labels: [ __name__ ]
           regex: "WebVDuration_count|WebVSummary|WebVSummary_count"
           action: keep
       - job_name: 'webv-imdb'
         static_configs:
-          - targets: [ 'webv-imdb.monitoring.svc.cluster.local:8080' ]
+          - targets: [ 'webv-imdb.imdb.svc.cluster.local:8080' ]
         metric_relabel_configs:
         - source_labels: [ __name__ ]
           regex: "WebVDuration_count|WebVSummary|WebVSummary_count"
@@ -83,22 +83,22 @@ data:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{gitops.app}}-deployment
+  name: {{gitops.name}}-deployment
   namespace: {{gitops.namespace}}
   labels:
-    app: {{gitops.app}}-server
+    app: {{gitops.name}}-server
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{gitops.app}}-server
+      app: {{gitops.name}}-server
   template:
     metadata:
       labels:
-        app: {{gitops.app}}-server
+        app: {{gitops.name}}-server
     spec:
       containers:
-        - name: {{gitops.app}}
+        - name: {{gitops.name}}
           image: {{gitops.image}}
           args:
             - "--storage.tsdb.retention.time=12h"
@@ -138,14 +138,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{gitops.app}}-service
+  name: {{gitops.name}}-service
   namespace: {{gitops.namespace}}
   annotations:
       prometheus.io/scrape: 'true'
       prometheus.io/port:   '9090'
 spec:
   selector:
-    app: {{gitops.app}}-server
+    app: {{gitops.name}}-server
   ports:
     - port: 8080
       targetPort: 9090
