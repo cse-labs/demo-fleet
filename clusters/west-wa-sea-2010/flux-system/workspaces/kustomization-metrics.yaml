@@ -1,0 +1,13 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: metrics
+  namespace: flux-system
+spec:
+  interval: 1m0s
+  path: ./clusters/west-wa-sea-2010/metrics
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: gitops

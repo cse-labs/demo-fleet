@@ -22,7 +22,7 @@ spec:
       labels:
         app: rtspsim
       annotations:
-        gitops.version: v-22-10-06-16-05-17
+        gitops.version: v-22-10-06-17-01-49
     spec:
       nodeSelector:
         "beta.kubernetes.io/os": linux
