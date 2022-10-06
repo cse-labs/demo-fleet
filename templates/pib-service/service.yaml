@@ -4,10 +4,9 @@ metadata:
   name: {{gitops.app}}
   namespace: {{gitops.namespace}}
 spec:
-  type: NodePort
+  type: ClusterIP
   ports:
     - port: {{gitops.port}}
-      nodePort: {{gitops.nodePort}}
       targetPort: http
       protocol: TCP
       name: http
