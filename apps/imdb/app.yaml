@@ -16,6 +16,8 @@ deployments:
             nodePort: 30080
             port: 8080
             readinessProbe: /readyz
+            webVImage: ghcr.io/cse-labs/pib-webv:latest
+            webVTestFile: imdb-load.json
             targets:
               - store:west-wa-red-cppe
             workspace: imdb

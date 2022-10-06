@@ -1,0 +1,15 @@
+template: .gitops
+deployments:
+    dev:
+        target: dev
+        values:
+            app: prometheus
+            environment: dev
+            image: prom/prometheus:latest
+            name: prometheus
+            namespace: metrics
+            prometheusURL: https://prometheus-prod-10-prod-us-central-0.grafana.net/api/prom/push
+            prometheusUser: 261866
+            targets:
+                - store:west-wa-red-cppe
+            workspace: metrics

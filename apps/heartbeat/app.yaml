@@ -18,4 +18,6 @@ deployments:
             readinessProbe: /readyz
             targets:
                 - all
+            webVImage: ghcr.io/cse-labs/pib-webv:latest
+            webVTestFile: heartbeat-load.json
             workspace: bootstrap
