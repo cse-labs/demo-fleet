@@ -16,5 +16,6 @@ deployments:
             nodePort: 30080
             port: 8080
             readinessProbe: /readyz
-            targets: []
+            targets:
+              - store:west-wa-red-cppe
             workspace: imdb
